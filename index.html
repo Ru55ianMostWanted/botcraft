@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rent/Buy Apartment Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F5F5F5;
+      color: #000000;
+    }
+
+    h1 {
+      color: #0088CC;
+    }
+
+    label {
+      color: #0088CC;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      background-color: #FFFFFF;
+      border: 1px solid #B3B3B3;
+      color: #000000;
+      padding: 5px;
+      border-radius: 3px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      border: 1px solid #B3B3B3;
+    }
+
+    select {
+      background-color: #FFFFFF;
+      border: 1px solid #B3B3B3;
+      color: #000000;
+      padding: 5px;
+      border-radius: 3px;
+    }
+
+    button {
+      background-color: #0088CC;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    button:hover {
+      background-color: #005580;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rent/Buy Apartment Form</h1>
+
+  <div>
+    <label for="toggle">Rent apartment:</label>
+    <input type="checkbox" id="toggle" checked>
+  </div>
+
+  <div id="languageSelector">
+    <label for="language">Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+    </select>
+  </div>
+
+  <div id="rentForm">
+    <h2>Rent Apartment Form</h2>
+    <form>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+        <small>Enter a 10-digit phone number without spaces or dashes.</small>
+      </div>
+
+      <div>
+        <label for="budget">Budget ($500 - $3000):</label>
+        <input type="range" id="budget" name="budget" min="500" max="3000" step="100">
+      </div>
+
+      <div>
+        <label for="rooms">Number of rooms (max 10):</label>
+        <input type="number" id="rooms" name="rooms" min="1" max="10">
+      </div>
+
+      <div>
+        <label for="period">Period of renting (6-24 months):</label>
+        <input type="number" id="period" name="period" min="6" max="24">
+      </div>
+
+      <div>
+        <label for="territory">Territory:</label><br>
+        <input type="checkbox" id="territory1" name="territory" value="Tbilisi">
+        <label for="territory1">Tbilisi</label><br>
+        <input type="checkbox" id="territory2" name="territory" value="Another City">
+        <label for="territory2">Another City</label><br>
+        <input type="checkbox" id="territory3" name="territory" value="Yet Another City">
+        <label for="territory3">Yet Another City</label><br>
+      </div>
+
+      <div>
+        <label for="pets">Pets:</label><br>
+        <input type="radio" id="petsYes" name="pets" value="Yes">
+        <label for="petsYes">Yes</label><br>
+        <input type="radio" id="petsNo" name="pets" value="No">
+        <label for="petsNo">No</label><br>
+      </div>
+
+      <div>
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments"></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div id="buyForm" style="display: none;">
+    <h2>Buy Apartment Form</h2>
+    <form>
+      <div>
+        <label for="buyBudget">Budget ($):</label>
+        <input type="number" id="buyBudget" name="buyBudget" min="0" required>
+      </div>
+
+      <div>
+        <label for="buyRooms">Number of rooms:</label>
+        <input type="number" id="buyRooms" name="buyRooms" min="1" max="10">
+      </div>
+
+      <div>
+        <label for="buyLocation">Location:</label><br>
+        <input type="checkbox" id="buyLocation1" name="buyLocation" value="Location 1">
+        <label for="buyLocation1">Location 1</label><br>
+        <input type="checkbox" id="buyLocation2" name="buyLocation" value="Location 2">
+        <label for="buyLocation2">Location 2</label><br>
+        <input type="checkbox" id="buyLocation3" name="buyLocation" value="Location 3">
+        <label for="buyLocation3">Location 3</label><br>
+      </div>
+
+      <div>
+        <label for="buyMinSize">Minimum size (m<sup>2</sup>):</label>
+        <input type="number" id="buyMinSize" name="buyMinSize" min="0">
+      </div>
+
+      <div>
+        <label for="buyComments">Additional Comments:</label>
+        <textarea id="buyComments" name="buyComments"></textarea>
+      </div>
+
+      <div>
+        <label for="buyPhone">Phone Number:</label>
+        <input type="tel" id="buyPhone" name="buyPhone" pattern="[0-9]{10}">
+        <small>Enter a 10-digit phone number without spaces or dashes.</small>
+      </div>
+
+      <div>
+        <label for="buyEmail">Email:</label>
+        <input type="email" id="buyEmail" name="buyEmail">
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('toggle');
+    const rentForm = document.getElementById('rentForm');
+    const buyForm = document.getElementById('buyForm');
+    const languageSelector = document.getElementById('language');
+
+    toggle.addEventListener('change', function() {
+      if (toggle.checked) {
+        rentForm.style.display = 'block';
+        buyForm.style.display = 'none';
+      } else {
+        rentForm.style.display = 'none';
+        buyForm.style.display = 'block';
+      }
+    });
+
+    languageSelector.addEventListener('change', function() {
+      const selectedLanguage = languageSelector.value;
+
+      if (selectedLanguage === 'en') {
+        // Show English forms
+        document.getElementById('rentForm').innerHTML = `
+          <h2>Rent Apartment Form</h2>
+          <form>
+            <!-- Rent form fields in English -->
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <!-- Include other rent form fields in English -->
+          </form>
+        `;
+
+        document.getElementById('buyForm').innerHTML = `
+          <h2>Buy Apartment Form</h2>
+          <form>
+            <!-- Buy form fields in English -->
+            <div>
+              <label for="buyBudget">Budget ($):</label>
+              <input type="number" id="buyBudget" name="buyBudget" min="0" required>
+            </div>
+            <!-- Include other buy form fields in English -->
+          </form>
+        `;
+      } else if (selectedLanguage === 'ru') {
+        // Show Russian forms
+        document.getElementById('rentForm').innerHTML = `
+          <h2>Форма аренды квартиры</h2>
+          <form>
+            <!-- Rent form fields in Russian -->
+            <div>
+              <label for="name">Имя:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <!-- Include other rent form fields in Russian -->
+          </form>
+        `;
+
+        document.getElementById('buyForm').innerHTML = `
+          <h2>Форма покупки квартиры</h2>
+          <form>
+            <!-- Buy form fields in Russian -->
+            <div>
+              <label for="buyBudget">Бюджет ($):</label>
+              <input type="number" id="buyBudget" name="buyBudget" min="0" required>
+            </div>
+            <!-- Include other buy form fields in Russian -->
+          </form>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

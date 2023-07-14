@@ -4,16 +4,20 @@
   <title>User ID Page</title>
 </head>
 <body>
-  <h1>User ID: <span id="user-id"></span></h1>
-
-  <script>
-    // Get the user ID from the URL query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('user_id');
-
-    // Display the user ID on the page
-    const userIdElement = document.getElementById('user-id');
-    userIdElement.textContent = userId;
-  </script>
+<form
+  action="https://formspree.io/f/xjvqvzqe"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your file:
+    <input type="file" name="upload">
+  </label>
+  <button type="submit">Send</button>
+</form>
 </body>
 </html>
